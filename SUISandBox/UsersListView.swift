@@ -58,7 +58,7 @@ struct UsersListView: View {
                     Button {
                         withAnimation {
                             isNewUserAdded.toggle()
-                            let newUser = DataGenerator.User(name: "New User")
+                            let newUser = DataGenerator.newUser
                             users.append(newUser)
                         }
                     } label: {
@@ -78,13 +78,46 @@ struct UsersListView_Previews: PreviewProvider {
     }
 }
 
-struct DataGenerator {
-
-    struct User: Identifiable, Hashable {
-        let id = UUID()
-        var name: String
+/// Data for app
+struct DataStore {
+    
+    enum SpotColor: String, CaseIterable {
+        case red, orange, yellow, green, blue, magenta, brown, pink
     }
     
+    static let emojiList = ["👻", "🐢", "🧑🏻‍✈️"]
+    
+    static let names = [""]
+    
+    static let surnames = [""]
+    
+}
+
+/// User model
+struct User: Identifiable {
+    let id = UUID()
+    var name: String
+    let emoji: String
+    let spotColor: String
+}
+
+struct DataGenerator {
+
+    static let newUser = User(
+        name: "New User",
+        emoji: "♥️",
+        spotColor: DataStore.SpotColor.blue.rawValue
+    )
+    
+    static func getEmoji() -> String {
+        DataStore.emojiList.randomElement() ?? "♥️"
+    }
+    
+    static func getSpotColor() -> String {
+        DataStore.SpotColor.allCases.randomElement()?.rawValue ?? "♥️"
+    }
+    
+    /// Get random list  of users with phantom names
     static func getList(of count: Int) -> [User] {
         var list = [User]()
         var name = ""
@@ -96,7 +129,11 @@ struct DataGenerator {
                     name.append(char)
                 }
             }
-            list.append(User(name: name.capitalized))
+            list.append(User(
+                name: name,
+                emoji: getEmoji(),
+                spotColor: getSpotColor()
+            ))
             name = ""
         }
         
