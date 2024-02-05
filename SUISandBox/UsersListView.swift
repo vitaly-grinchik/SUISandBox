@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UsersListView: View {
-    @State private var users = DataStore.getList(of: 7)
+    @State private var users = DataStore.shared.getList(of: 7)
     @State private var isNewUserAdded = false
     @State private var selection = Set<UUID>()
     
@@ -45,7 +45,7 @@ struct UsersListView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        users = DataStore.getList(of: 6)
+                        users = data.getList(of: 5)
                     } label: {
                         Image(systemName: "repeat")
                     }
@@ -60,7 +60,7 @@ struct UsersListView: View {
                     Button {
                         withAnimation {
                             isNewUserAdded.toggle()
-                            let newUser = DataStore.newUser
+                            let newUser = data.newUser
                             users.append(newUser)
                         }
                     } label: {
