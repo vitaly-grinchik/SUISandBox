@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D8C3B7262B6EE1F6006ACF4A /* UserRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C3B7252B6EE1F6006ACF4A /* UserRowView.swift */; };
 		D8F1772B2B645A3800A740B9 /* SUISandBoxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F1772A2B645A3800A740B9 /* SUISandBoxApp.swift */; };
 		D8F1772D2B645A3800A740B9 /* UsersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F1772C2B645A3800A740B9 /* UsersListView.swift */; };
 		D8F1772F2B645A3D00A740B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8F1772E2B645A3D00A740B9 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D8C3B7252B6EE1F6006ACF4A /* UserRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRowView.swift; sourceTree = "<group>"; };
 		D8F177272B645A3800A740B9 /* SUISandBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SUISandBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F1772A2B645A3800A740B9 /* SUISandBoxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUISandBoxApp.swift; sourceTree = "<group>"; };
 		D8F1772C2B645A3800A740B9 /* UsersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 				D8F1772A2B645A3800A740B9 /* SUISandBoxApp.swift */,
 				D8F1772C2B645A3800A740B9 /* UsersListView.swift */,
 				D8F177382B645B2A00A740B9 /* UserInfoView.swift */,
+				D8C3B7252B6EE1F6006ACF4A /* UserRowView.swift */,
 				D8F1772E2B645A3D00A740B9 /* Assets.xcassets */,
 				D8F177302B645A3D00A740B9 /* Preview Content */,
 			);
@@ -144,6 +147,7 @@
 			files = (
 				D8F177392B645B2A00A740B9 /* UserInfoView.swift in Sources */,
 				D8F1772D2B645A3800A740B9 /* UsersListView.swift in Sources */,
+				D8C3B7262B6EE1F6006ACF4A /* UserRowView.swift in Sources */,
 				D8F1772B2B645A3800A740B9 /* SUISandBoxApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
