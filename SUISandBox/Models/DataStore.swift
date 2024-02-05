@@ -316,21 +316,20 @@ final class DataStore {
     
     /// Get random list  of users with phantom names
      func getList(of count: Int) -> [User] {
-        var list = [User]()
-         let firstName = firstNames.randomElement() ?? "Steve"
-         let lastName = lastNames.randomElement() ?? "Jobs"
+         var list = [User]()
          
          for _ in 1...count {
+             let firstName = firstNames.randomElement() ?? "Steve"
+             let lastName = lastNames.randomElement() ?? "Jobs"
              let randomUser = User(
                 firstName: firstName,
                 lastName: lastName,
                 emoji: getEmoji(),
                 spotColor: getSpotColor()
              )
+             list.append(randomUser)
          }
-        
-        
-        return list
+         return list
     }
     
     private init() {}

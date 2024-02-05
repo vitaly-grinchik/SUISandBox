@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct UsersListView: View {
-    @State private var users = DataStore.shared.getList(of: 7)
+    @State private var users = DataStore.shared.getList(of: 5)
     @State private var isNewUserAdded = false
     @State private var selection = Set<UUID>()
+    @State private var listSize = "5"
     
     private let data = DataStore.shared
     
@@ -19,9 +20,9 @@ struct UsersListView: View {
             List(selection: $selection) {
                 ForEach($users) { $user in
                     NavigationLink {
-                        UserInfoView(user: $user.firstName)
+                        UserInfoView(user: $user)
                     } label: {
-                        Label(user.firstName, systemImage: "person")
+                        Label(user.fullName, systemImage: "person")
                     }
                 }
                 .onMove { source, destination in
@@ -31,12 +32,6 @@ struct UsersListView: View {
                     users.remove(atOffsets: source)
                 }
                 
-//                if !selection.isEmpty {
-//                    Section(header: Text("Selected:")) {
-//                        List(<#T##data: RandomAccessCollection##RandomAccessCollection#>, rowContent: <#T##(Identifiable) -> View#>)
-//                    }
-//                }
-                
             }
             .navigationTitle("Users")
 //            .refreshable {
@@ -44,12 +39,8 @@ struct UsersListView: View {
 //            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        users = data.getList(of: 5)
-                    } label: {
-                        Image(systemName: "repeat")
-                    }
-
+                    TextField("Count", text: $listSize)
+                        .textFieldStyle(.roundedBorder)
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -68,8 +59,15 @@ struct UsersListView: View {
                     }
                 }
             }
+            .onChange(of: listSize) { newValue in
+                updateList()
+            }
         }
 //        .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    private func updateList() {
+        users = data.getList(of: Int(listSize) ?? 1)
     }
 }
 
