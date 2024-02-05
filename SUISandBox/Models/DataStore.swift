@@ -300,7 +300,8 @@ final class DataStore {
     ]
     
     let newUser = User(
-        firstName: "New User",
+        firstName: "New User First Name",
+        lastName: "New User Last NAme",
         emoji: "♥️",
         spotColor: SpotColor.blue.rawValue
     )
@@ -316,22 +317,18 @@ final class DataStore {
     /// Get random list  of users with phantom names
      func getList(of count: Int) -> [User] {
         var list = [User]()
-        var name = ""
-        let alphabeth = "abcdefghjiklmnopqrstvuwxyz"
-        
-        (1...count).forEach { _ in
-            (1...Int.random(in: 3...10)).forEach { _ in
-                if let char = alphabeth.randomElement() {
-                    name.append(char)
-                }
-            }
-            list.append(User(
-                firstName: name,
+         let firstName = firstNames.randomElement() ?? "Steve"
+         let lastName = lastNames.randomElement() ?? "Jobs"
+         
+         for _ in 1...count {
+             let randomUser = User(
+                firstName: firstName,
+                lastName: lastName,
                 emoji: getEmoji(),
                 spotColor: getSpotColor()
-            ))
-            name = ""
-        }
+             )
+         }
+        
         
         return list
     }
