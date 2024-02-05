@@ -19,9 +19,9 @@ struct UsersListView: View {
             List(selection: $selection) {
                 ForEach($users) { $user in
                     NavigationLink {
-                        UserInfoView(user: $user.name)
+                        UserInfoView(user: $user.firstName)
                     } label: {
-                        Label(user.name, systemImage: "person")
+                        Label(user.firstName, systemImage: "person")
                     }
                 }
                 .onMove { source, destination in

@@ -300,7 +300,7 @@ final class DataStore {
     ]
     
     let newUser = User(
-        name: "New User",
+        firstName: "New User",
         emoji: "♥️",
         spotColor: SpotColor.blue.rawValue
     )
@@ -326,7 +326,7 @@ final class DataStore {
                 }
             }
             list.append(User(
-                name: name,
+                firstName: name,
                 emoji: getEmoji(),
                 spotColor: getSpotColor()
             ))
