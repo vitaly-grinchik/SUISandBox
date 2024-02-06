@@ -3,7 +3,7 @@ import Foundation
 
 struct User: Identifiable {
     
-    struct UserColor {
+    struct Tint {
         let red: Double
         let green: Double
         let blue: Double
