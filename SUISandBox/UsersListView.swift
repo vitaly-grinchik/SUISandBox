@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct UsersListView: View {
-    @State private var users = DataStore.shared.getList(of: 5)
     @State private var isNewUserAdded = false
     @State private var selection = Set<UUID>()
     @State private var listSize = "5"
+    @Binding var users: [User]
     
     private let data = DataStore.shared
     
@@ -22,7 +22,7 @@ struct UsersListView: View {
                     NavigationLink {
                         UserInfoView(user: $user)
                     } label: {
-                        UserRowView(fullName: user.fullName, emoji: user.emoji)
+                        UserRowView(user: user)
                     }
                 }
                 .onMove { source, destination in
@@ -74,6 +74,6 @@ struct UsersListView: View {
 
 struct UsersListView_Previews: PreviewProvider {
     static var previews: some View {
-        UsersListView()
+        UsersListView(users: .constant([DataStore.shared.newUser]))
     }
 }
