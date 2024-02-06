@@ -22,7 +22,7 @@ struct UsersListView: View {
                     NavigationLink {
                         UserInfoView(user: $user)
                     } label: {
-                        Label(user.fullName, systemImage: "person")
+                        UserRowView(fullName: user.fullName, emoji: user.emoji)
                     }
                 }
                 .onMove { source, destination in

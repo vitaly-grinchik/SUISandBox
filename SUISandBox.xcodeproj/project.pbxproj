@@ -70,8 +70,8 @@
 			children = (
 				D8F1772A2B645A3800A740B9 /* SUISandBoxApp.swift */,
 				D8F1772C2B645A3800A740B9 /* UsersListView.swift */,
-				D8F177382B645B2A00A740B9 /* UserInfoView.swift */,
 				D8C3B7252B6EE1F6006ACF4A /* UserRowView.swift */,
+				D8F177382B645B2A00A740B9 /* UserInfoView.swift */,
 				D8C3B7292B718A5E006ACF4A /* Models */,
 				D8F1772E2B645A3D00A740B9 /* Assets.xcassets */,
 				D8F177302B645A3D00A740B9 /* Preview Content */,

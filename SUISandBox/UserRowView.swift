@@ -8,27 +8,34 @@
 import SwiftUI
 
 struct UserRowView: View {
-    let name: String
-    let spotColor: String
+    let fullName: String
     let emoji: String
+    let spotColor = Self.getColor()
     
     var body: some View {
         HStack {
-            ZStack {
-                Color(spotColor)
-                Circle()
-                    .frame(width: 40, height: 40)
-                Text(emoji)
-            }
-            Text(name)
-                .font(.title)
+            Circle()
+                .foregroundColor(spotColor)
+                .frame(width: 40, height: 40)
+            
+            Text(fullName)
+                
             Spacer()
         }
+            
+    }
+    
+    private static func getColor() -> Color {
+        let red = Double.random(in: 0...1)
+        let green = Double.random(in: 0...1)
+        let blue = Double.random(in: 0...1)
+        
+        return Color(red: red, green: green, blue: blue)
     }
 }
 
 struct UserRowView_Previews: PreviewProvider {
     static var previews: some View {
-        UserRowView(name: "User", spotColor: "blue", emoji: "🏠")
+        UserRowView(fullName: "User Fullname", emoji: "♦️")
     }
 }

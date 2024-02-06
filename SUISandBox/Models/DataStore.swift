@@ -1,10 +1,6 @@
 /// Data for app
 final class DataStore {
     
-    enum SpotColor: String, CaseIterable {
-        case red, orange, yellow, green, blue, magenta, brown, pink
-    }
-    
     static let shared = DataStore()    
     
     private let emojiList = ["👻", "🐢", "🧑🏻‍✈️"]
@@ -300,18 +296,13 @@ final class DataStore {
     ]
     
     let newUser = User(
-        firstName: "New User First Name",
-        lastName: "New User Last NAme",
-        emoji: "♥️",
-        spotColor: SpotColor.blue.rawValue
+        firstName: "New",
+        lastName: "User",
+        emoji: "♥️"
     )
     
     private func getEmoji() -> String {
         emojiList.randomElement() ?? "♥️"
-    }
-    
-    private func getSpotColor() -> String {
-        SpotColor.allCases.randomElement()?.rawValue ?? "♥️"
     }
     
     /// Get random list  of users with phantom names
@@ -324,8 +315,7 @@ final class DataStore {
              let randomUser = User(
                 firstName: firstName,
                 lastName: lastName,
-                emoji: getEmoji(),
-                spotColor: getSpotColor()
+                emoji: getEmoji()
              )
              list.append(randomUser)
          }
