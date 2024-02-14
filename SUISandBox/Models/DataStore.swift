@@ -5,7 +5,8 @@ final class DataStore {
     
     static let shared = DataStore()    
     
-    private let emojiList = ["👻", "🐢", "🧑🏻‍✈️"]
+    private let emojiList = ["👻", "🐢", "🧑🏻‍✈️", "😅", "🐰", "🐋", "💎", "🎃",
+                             "👹", "💀", "🤡", "👽", "🫀", "👩‍🦳", "👳‍♀️", "🙅🏽‍♂️"]
     
     private let lastNames = [
         "Smith",

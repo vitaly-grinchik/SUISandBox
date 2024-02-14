@@ -10,16 +10,14 @@ import SwiftUI
 struct UserRowView: View {
     let user: User
     
+    var tintColor: Color {
+        Color(red: user.tintRed, green: user.tintGreen, blue: user.tintBlue)
+    }
+    
     var body: some View {
         HStack {
             Circle()
-                .foregroundColor(
-                    Color(
-                        red: user.tintRed,
-                        green: user.tintGreen,
-                        blue: user.tintBlue
-                    )
-                )
+                .foregroundColor(tintColor)
                 .frame(width: 40, height: 40)
             
             Text(user.fullName)

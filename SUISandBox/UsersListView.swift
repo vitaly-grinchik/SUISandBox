@@ -9,15 +9,24 @@ import SwiftUI
 
 struct UsersListView: View {
     @State private var isAddingNewUser = false
-    @State private var selection = Set<UUID>()
-    @State private var listSize = "5"
+    @State private var listSize = 5
     @Binding var users: [User]
+    
+    private let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+    
+    private var userCount: Int {
+            users.count
+    }
     
     private let data = DataStore.shared
     
     var body: some View {
         NavigationView {
-            List(selection: $selection) {
+            List {
                 ForEach($users) { $user in
                     NavigationLink {
                         UserInfoView(user: $user)
@@ -30,6 +39,7 @@ struct UsersListView: View {
                 }
                 .onDelete { source in
                     users.remove(atOffsets: source)
+                    updateListSize()
                 }
                 
             }
@@ -39,8 +49,10 @@ struct UsersListView: View {
 //            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    TextField("Count", text: $listSize)
-                        .textFieldStyle(.roundedBorder)
+                    TextField("\(userCount)", value: $listSize, formatter: formatter) {
+                        updateList(for: listSize)
+                    }
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -53,27 +65,30 @@ struct UsersListView: View {
                             isAddingNewUser.toggle()
                             let newUser = data.newUser
                             users.append(newUser)
+                            updateListSize()
                         }
                     } label: {
                         Image(systemName: "plus")
                     }
                 }
             }
-            .onChange(of: listSize) { newValue in
-                updateList()
-            }
         }
-//        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    private func updateList() {
-        users = data.getList(of: Int(listSize) ?? 1)
+    private func updateList(for count: Int) {
+        users = data.getList(of: count)
+    }
+    
+    private func updateListSize() {
+        listSize = userCount
     }
 }
 
 
 struct UsersListView_Previews: PreviewProvider {
     static var previews: some View {
-        UsersListView(users: .constant([DataStore.shared.newUser]))
+        let users = DataStore.shared.getList(of: 3)
+        UsersListView(users: .constant(users))
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D88812562B795641009C1FC0 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88812552B795641009C1FC0 /* ShapeView.swift */; };
 		D8C3B7262B6EE1F6006ACF4A /* UserRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C3B7252B6EE1F6006ACF4A /* UserRowView.swift */; };
 		D8C3B7282B718A58006ACF4A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C3B7272B718A58006ACF4A /* User.swift */; };
 		D8C3B72B2B718AA9006ACF4A /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C3B72A2B718AA9006ACF4A /* DataStore.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D88812552B795641009C1FC0 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		D8C3B7252B6EE1F6006ACF4A /* UserRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRowView.swift; sourceTree = "<group>"; };
 		D8C3B7272B718A58006ACF4A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D8C3B72A2B718AA9006ACF4A /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
@@ -81,8 +83,9 @@
 			children = (
 				D8F1772A2B645A3800A740B9 /* SUISandBoxApp.swift */,
 				D8F1772C2B645A3800A740B9 /* UsersListView.swift */,
-				D8C3B7252B6EE1F6006ACF4A /* UserRowView.swift */,
 				D8F177382B645B2A00A740B9 /* UserInfoView.swift */,
+				D8C3B7252B6EE1F6006ACF4A /* UserRowView.swift */,
+				D88812552B795641009C1FC0 /* ShapeView.swift */,
 				D8C3B7292B718A5E006ACF4A /* Models */,
 				D8F1772E2B645A3D00A740B9 /* Assets.xcassets */,
 				D8F177302B645A3D00A740B9 /* Preview Content */,
@@ -177,6 +180,7 @@
 				D8C3B7262B6EE1F6006ACF4A /* UserRowView.swift in Sources */,
 				D8C3B7282B718A58006ACF4A /* User.swift in Sources */,
 				D8F1772B2B645A3800A740B9 /* SUISandBoxApp.swift in Sources */,
+				D88812562B795641009C1FC0 /* ShapeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
