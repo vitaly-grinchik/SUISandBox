@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UsersListView: View {
-    @State private var isAddingNewUser = false
+//    @State private var isAddingNewUser = false
     @State private var listSize = 5
     @Binding var users: [User]
     
@@ -62,7 +62,7 @@ struct UsersListView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         withAnimation {
-                            isAddingNewUser.toggle()
+//                            isAddingNewUser.toggle()
                             let newUser = data.newUser
                             users.append(newUser)
                             updateListSize()
