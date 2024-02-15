@@ -11,16 +11,13 @@ struct UsersListView: View {
 //    @State private var isAddingNewUser = false
     @State private var listSize = 5
     @Binding var users: [User]
+    @State private var isEmptyList = false
     
     private let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         return formatter
     }()
-    
-    private var userCount: Int {
-            users.count
-    }
     
     private let data = DataStore.shared
     
@@ -44,12 +41,12 @@ struct UsersListView: View {
                 
             }
             .navigationTitle("Users")
-//            .refreshable {
-//                users = DataGenerator.getList(of: 5)
-//            }
+            //            .refreshable {
+            //                users = DataGenerator.getList(of: 5)
+            //            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    TextField("\(userCount)", value: $listSize, formatter: formatter) {
+                    TextField("\(users.count)", value: $listSize, formatter: formatter) {
                         updateList(for: listSize)
                     }
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -62,7 +59,7 @@ struct UsersListView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         withAnimation {
-//                            isAddingNewUser.toggle()
+                            //                            isAddingNewUser.toggle()
                             let newUser = data.newUser
                             users.append(newUser)
                             updateListSize()
@@ -73,7 +70,16 @@ struct UsersListView: View {
                 }
             }
         }
+        .onAppear {
+        // TODO: Load JSON
+            listSize = users.count
+        }
         .navigationViewStyle(StackNavigationViewStyle())
+        .alert(isPresented: $isEmptyList) {
+            Alert(title: Text("Warning"),
+                  message: Text("List is empty")
+            )
+        }
     }
     
     private func updateList(for count: Int) {
@@ -81,7 +87,8 @@ struct UsersListView: View {
     }
     
     private func updateListSize() {
-        listSize = userCount
+        listSize = users.count
+        isEmptyList = users.isEmpty
     }
 }
 

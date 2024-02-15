@@ -312,7 +312,10 @@ final class DataStore {
      func getList(of count: Int) -> [User] {
          var list = [User]()
          
-         for _ in 1...count {
+         // Set minimum value 1
+         let acceptableCount = max(1, count)
+         
+         for _ in 1...acceptableCount {
              let firstName = firstNames.randomElement() ?? "Steve"
              let lastName = lastNames.randomElement() ?? "Jobs"
              let randomUser = User(
